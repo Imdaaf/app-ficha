@@ -1,0 +1,19 @@
+[
+  {
+    "productId": "900001",
+    "productName": "Remera Lisa Algodón",
+    "brand": "Sintética",
+    "linkText": "remera-lisa-algodon",
+    "items": [
+      { "itemId": "1", "name": "Remera Lisa Algodón Negra", "variations": ["Color"], "Color": ["Negro"],
+        "images": [{ "imageId": "5001", "imageUrl": "https://example.com/arquivos/ids/5001/remera.jpg" }],
+        "sellers": [{ "commertialOffer": { "Price": 15000, "AvailableQuantity": 5 } }] },
+      { "itemId": "2", "name": "Remera Lisa Algodón Blanca", "variations": ["Color"], "Color": ["Blanco"],
+        "images": [{ "imageId": "5001", "imageUrl": "https://example.com/arquivos/ids/5001/remera.jpg" }],
+        "sellers": [{ "commertialOffer": { "Price": 15000, "AvailableQuantity": 5 } }] },
+      { "itemId": "3", "name": "Remera Lisa Algodón Verde", "variations": ["Color"], "Color": ["Verde"],
+        "images": [{ "imageId": "5003", "imageUrl": "https://example.com/arquivos/ids/5003/remera-verde.jpg" }],
+        "sellers": [{ "commertialOffer": { "Price": 15000, "AvailableQuantity": 5 } }] }
+    ]
+  }
+]
