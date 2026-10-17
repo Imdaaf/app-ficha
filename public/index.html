@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisor de fichas VTEX</title>
+  <meta name="description" content="Pegá el enlace de una ficha de producto de una tienda VTEX y mirá qué problemas de carga del catálogo tiene, y cómo se arregla cada uno.">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Revisor de fichas</h1>
+      <p>Pegá el enlace de una ficha de producto de una tienda VTEX. Te digo qué problemas de carga tiene que pueden terminar en una compra equivocada, y cómo se arregla cada uno.</p>
+    </header>
+
+    <form id="form" autocomplete="off">
+      <label for="enlace">Enlace de la ficha</label>
+      <input id="enlace" name="url" type="url" inputmode="url" required placeholder="https://tienda.com.ar/producto/p">
+      <button type="submit">Revisar</button>
+    </form>
+
+    <div id="resultado" aria-live="polite"></div>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

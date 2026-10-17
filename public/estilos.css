@@ -1,0 +1,125 @@
+/* Primero el teléfono. Nada puede ser más ancho que la pantalla. */
+:root {
+  --fondo: #faf9f7;
+  --texto: #1f1f1f;
+  --suave: #5c5c5c;
+  --borde: #dedad3;
+  --tarjeta: #ffffff;
+  --acento: #1d4ed8;
+  --alerta: #b45309;
+  --sobre-acento: #ffffff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #161616;
+    --texto: #ececec;
+    --suave: #a8a8a8;
+    --borde: #333;
+    --tarjeta: #1f1f1f;
+    --acento: #7aa2ff;
+    --alerta: #f0a35a;
+    --sobre-acento: #10131a;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+main {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+h1 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 .5rem; }
+h2 { font-size: 1.2rem; line-height: 1.3; margin: 0 0 .75rem; }
+h3 { font-size: 1.05rem; line-height: 1.3; margin: 0 0 .75rem; }
+header p { color: var(--suave); margin: 0 0 1.25rem; }
+
+form { display: grid; gap: .5rem; margin-bottom: 1.5rem; }
+label { font-weight: 600; }
+input, button { font: inherit; width: 100%; min-width: 0; }
+input {
+  padding: .75rem;
+  border: 1px solid var(--borde);
+  border-radius: .5rem;
+  background: var(--tarjeta);
+  color: var(--texto);
+}
+button {
+  padding: .75rem;
+  border: 0;
+  border-radius: .5rem;
+  background: var(--acento);
+  color: var(--sobre-acento);
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled { opacity: .6; cursor: wait; }
+
+a { color: var(--acento); }
+
+section, article { margin-bottom: 1.25rem; }
+
+.ficha .tienda { color: var(--suave); font-size: .9rem; margin: 0; }
+.ficha .chequeos { color: var(--suave); font-size: .9rem; margin: 0; }
+
+.aviso, .vacio {
+  padding: 1rem;
+  border-radius: .5rem;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+}
+.vacio p, .aviso p { margin: 0; font-weight: 600; }
+
+.hallazgo {
+  padding: 1rem;
+  border-radius: .5rem;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--alerta);
+}
+.regla {
+  display: inline-block;
+  font-size: .75rem;
+  padding: .1rem .4rem;
+  border-radius: .25rem;
+  background: var(--alerta);
+  color: var(--fondo);
+  vertical-align: middle;
+}
+dl { margin: 0; }
+dt { font-weight: 600; font-size: .9rem; color: var(--suave); margin-top: .75rem; }
+dd { margin: .15rem 0 0; }
+
+.grupo { margin-top: .5rem; }
+.grupo-titulo { margin: 0 0 .25rem; font-weight: 600; }
+.variantes, .enlaces { margin: 0; padding-left: 1.1rem; }
+.variantes li { margin-bottom: .25rem; }
+.v-nombre { display: block; }
+.v-precio { display: block; color: var(--suave); font-size: .9rem; }
+
+.no-reviso {
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 1px dashed var(--borde);
+}
+.no-reviso ul { margin: 0; padding-left: 1.1rem; }
+.no-reviso li { margin-bottom: .5rem; }
+
+.nota, .cargando { color: var(--suave); }
+
+.demo-caso { border-top: 2px solid var(--borde); padding-top: 1rem; margin-top: 2rem; }
+.demo-caso > h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); }
