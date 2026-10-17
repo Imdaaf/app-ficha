@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisor de fichas · demo</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Revisor de fichas · demo</h1>
+      <p>Un resultado de cada tipo, armado con las respuestas guardadas. Solo para probar en local: no se publica.</p>
+    </header>
+    <div id="casos"></div>
+  </main>
+  <script type="module">
+    import { renderResultado, esc } from '/render.js';
+    const casos = await (await fetch('/demo/datos.json')).json();
+    document.getElementById('casos').innerHTML = casos
+      .map((c) => `<div class="demo-caso" data-caso="${esc(c.id)}"><h2>${esc(c.id)}</h2>${renderResultado(c.resultado)}</div>`)
+      .join('');
+    document.body.dataset.listo = '1';
+  </script>
+</body>
+</html>
