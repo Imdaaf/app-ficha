@@ -11,7 +11,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { revisarFicha, r2 } from '../lib/revisor.mjs';
 import { CASOS, NO_VTEX } from '../test/casos.mjs';
-import { fetchSimulado, leerFixture } from '../test/fetch-simulado.mjs';
+import { fetchSimulado, leerFixture, fueraDeLosFixtures, MENSAJE_MODO_PRUEBA } from '../test/fetch-simulado.mjs';
 
 const raiz = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const conFixtures = process.argv.includes('--fixtures');
@@ -43,6 +43,10 @@ http
     const u = new URL(req.url, `http://localhost:${puerto}`);
     try {
       if (u.pathname === '/api/revisar') {
+        if (conFixtures && fueraDeLosFixtures(u.searchParams.get('url') || '')) {
+          res.writeHead(200, { 'content-type': tipos['.json'] });
+          return res.end(JSON.stringify({ estado: 'error', mensaje: MENSAJE_MODO_PRUEBA, hallazgos: [], pedidos: 0 }));
+        }
         const r = await revisarFicha(u.searchParams.get('url') || '', conFixtures ? { fetch: fetchSimulado() } : {});
         res.writeHead(200, { 'content-type': tipos['.json'] });
         return res.end(JSON.stringify(r));
