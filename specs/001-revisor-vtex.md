@@ -1,5 +1,5 @@
 ---
-estado: en curso
+estado: implementada
 depende_de: []
 ---
 
@@ -12,7 +12,7 @@ variantes que comparten foto— y cómo se arregla cada uno. Sin IA, sin cuentas
 **Tipo:** feature · **Flujo:** design-first: el primer paso es una prueba mínima de que las tres
 reglas detectan los casos reales conocidos; si no los detectan, no se construye la página.
 
-Aprobada por Dafne en Gate 1 el 17/10/2026.
+Aprobada por Dafne en Gate 1 el 17/10/2026 y en Gate 2 el 18/10/2026.
 
 ## Estado previo
 

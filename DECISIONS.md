@@ -121,6 +121,11 @@ comprador no puede confundir una variante con otra, así que R4 no tiene nada qu
 lo que D2 suponía ("sin variaciones, el selector muestra el nombre del SKU"), que resultó falso.
 El criterio 2 de la spec cambió en consecuencia.
 
+Confirmado por Dafne el mismo día: entrando por `?skuId=128574` y agregando al carrito, la tienda
+dice "Este producto no está disponible actualmente", y esa variante no aparece en el buscador.
+La API la da con stock, pero en la tienda no se puede comprar: el dato de stock de la API no
+alcanza para saber qué se vende de verdad.
+
 Se probó y se descartó pedir el canal de venta 1 (`sc=1`): para Pardo devolvió lo mismo que sin
 canal, y en tiendas que usan otro canal principal podría no encontrar el producto.
 
@@ -144,5 +149,4 @@ Colorshop se queda, y la ruta del menú de VTEX está bien.
 
 | Qué | Quién cierra |
 |---|---|
-| Si entrando por `?skuId=128574` y agregando al carrito, Pardo cobra $37.800 o $71.699 | Dafne |
 | Detectar el selector sin nombres (D12) | Próxima versión |
