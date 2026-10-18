@@ -3,7 +3,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { revisarFicha, r2, r3, MAX_PEDIDOS, MENSAJE_NO_VTEX, esqueleto } from '../lib/revisor.mjs';
+import { revisarFicha, r2, r3, r4, MAX_PEDIDOS, MENSAJE_NO_VTEX, esqueleto } from '../lib/revisor.mjs';
 import { CASOS, NO_VTEX } from './casos.mjs';
 import { fetchSimulado, leerFixture } from './fetch-simulado.mjs';
 
@@ -19,7 +19,7 @@ const textoDe = (h) => JSON.stringify(h);
 // 1 · Paso cero: las tres reglas dan lo esperado sobre los cuatro casos reales.
 test('1 · paso cero: los cuatro casos reales dan lo esperado', async () => {
   const esperado = {
-    'pardo-pochoclera': { R2: 0, R3: 0, minR4: 1 },
+    'pardo-pochoclera': { R2: 0, R3: 0, minR4: 0, maxR4: 0 },
     'colorshop-aerosol': { R2: 0, R3: 0, minR4: 1 },
     'cetrogar-tag-green': { R2: 0, R3: 1, minR4: 0, maxR4: 0 },
     'pigmento-delineador': { R2: 0, R3: 0, minR4: 0, maxR4: 0 },
@@ -34,15 +34,27 @@ test('1 · paso cero: los cuatro casos reales dan lo esperado', async () => {
   }
 });
 
-// 2 · Pardo: un hallazgo R4 que nombra los dos precios.
-test('2 · R4 marca la pochoclera de Pardo con $37.800 y $71.699', async () => {
+// 2 · Pardo: dos SKU «Rojo» a $37.800 y $71.699, pero sin atributos de variante. La ficha no muestra
+// selector y el comprador ve una sola: no hay confusión posible en pantalla. Cambiado en Gate 2
+// (18/10/2026): antes se esperaba un hallazgo; Dafne vio la ficha y en pantalla hay una sola variante.
+test('2 · la pochoclera de Pardo no da hallazgos: sin atributos de variante no hay selector', async () => {
   const { r } = await revisar('pardo-pochoclera');
-  const r4s = deRegla(r, 'R4');
-  assert.equal(r4s.length, 1);
-  const t = textoDe(r4s[0]);
-  assert.match(t, /\$37\.800/);
-  assert.match(t, /\$71\.699/);
-  assert.match(t, /Rojo/);
+  assert.equal(r.estado, 'ok');
+  assert.equal(r.producto.variantes, 2, 'el catálogo sigue teniendo las dos variantes');
+  assert.deepEqual(deRegla(r, 'R4'), []);
+});
+
+// Gate 2 (18/10/2026): una variante que no se puede comprar no cuenta. Si en Colorshop el blanco
+// satinado y el común se quedan sin stock, «Blanco / 240 cm3» deja de ser un grupo confuso.
+test('Gate 2 · las variantes que no se pueden comprar no cuentan', () => {
+  const [p] = leerFixture('colorshop-aerosol.json');
+  const copia = structuredClone(p);
+  for (const sku of copia.items) {
+    if (/240 (Blanco Satinado|Cm3 Blanco)$/.test(sku.name)) for (const v of sku.sellers) v.commertialOffer.AvailableQuantity = 0;
+  }
+  const visibles = (prod) => r4(prod).flatMap((h) => h.dato.grupos).map((g) => g.variantes[0].visible);
+  assert.ok(visibles(p).includes('Blanco / 240 cm3'));
+  assert.ok(!visibles(copia).includes('Blanco / 240 cm3'));
 });
 
 // 3 · Colorshop: un hallazgo R4 con al menos tres variantes bajo "Blanco / 240 cm3".

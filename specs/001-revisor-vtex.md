@@ -54,7 +54,7 @@ Las pruebas corren con `node --test` sobre respuestas de la API guardadas como a
 | # | Criterio | Cómo se comprueba |
 |---|---|---|
 | 1 | **Paso cero:** se guardan las respuestas reales de los cuatro casos de abajo y las tres reglas dan lo esperado sobre ellas | `node --test` sobre los cuatro fixtures; si alguno falla, se para (ver condiciones) |
-| 2 | R4 marca la pochoclera de Pardo: dos variantes "Rojo" con $37.800 y $71.699 | Prueba sobre `fixtures/pardo-pochoclera.json`: un hallazgo R4 que nombra los dos precios |
+| 2 | La pochoclera de Pardo **no** da hallazgos: tiene dos SKU «Rojo» a $37.800 y $71.699, pero sin atributos de variante la ficha no muestra selector y el comprador ve una sola. *Cambiado en Gate 2, 18/10/2026: antes esperaba un hallazgo R4.* | Prueba sobre `fixtures/pardo-pochoclera.json`: cero hallazgos R4, y el catálogo sigue con dos variantes |
 | 3 | R4 marca el Aerosol Esmalte 3 en 1 de Colorshop: blanco mate, satinado y común bajo "Blanco / 240 cm3" | Prueba sobre `fixtures/colorshop-aerosol.json`: un hallazgo R4 con al menos tres variantes |
 | 4 | R3 encuentra que el localizador Motorola "green" de Cetrogar tiene un hermano "Blueberry" | Prueba sobre `fixtures/cetrogar-tag-green.json` y su búsqueda: un hallazgo R3 que enlaza la ficha Blueberry |
 | 5 | Control: el delineador Essence de Pigmento (8 colores en una ficha, cada uno con su foto) no da ningún hallazgo | Prueba sobre `fixtures/pigmento-delineador.json`: cero hallazgos |
@@ -84,6 +84,11 @@ compra equivocada, no la estética. Lo revisa Dafne en Gate 2.
   catálogo**; los del diseño de la tienda quedan afuera.
 - DECIDIDO por Dafne (discovery, 10/10/2026): cada hallazgo dice **cómo resolverlo**, no solo qué
   está mal.
+- DECIDIDO por Dafne (Gate 2, 18/10/2026): solo cuentan las variantes que se pueden comprar, y R4
+  no marca fichas sin atributos de variante, porque no muestran selector. Lo vio en la ficha de
+  Pardo: en pantalla hay una sola variante.
+- DECIDIDO por Dafne (Gate 2, 18/10/2026): "Lo que no reviso" suma el selector que no muestra el
+  nombre de cada opción (caso Pigmento); detectarlo queda para la próxima versión.
 
 **Delegadas, con criterio**
 

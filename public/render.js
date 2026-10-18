@@ -10,6 +10,10 @@ export const LO_QUE_NO_REVISO = [
     porque: 'Comparo si dos variantes usan el mismo archivo de foto, no lo que se ve en la foto. Una foto roja cargada en la variante azul no la veo.',
   },
   {
+    titulo: 'Si el selector muestra el nombre de cada opción',
+    porque: 'Hay tiendas que en el selector muestran solo una foto chiquita por opción, sin el nombre. El nombre está cargado, pero se lee solo en el título, y quien elige mira el selector. Eso depende del diseño de la tienda, y esta versión no mira la página tal como se ve.',
+  },
+  {
     titulo: 'Cómo se comporta la tienda',
     porque: 'Qué variante viene elegida al entrar, la compra rápida desde el listado, el carrito. Eso es del diseño de la tienda, no de la carga del catálogo, y es igual en todas sus fichas.',
   },

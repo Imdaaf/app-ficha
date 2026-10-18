@@ -110,11 +110,39 @@ Cada decisión con su porqué y lo que se descartó. Si no está acá, se vuelve
 - 🔍 El nombre del menú "Catálogo › Productos y SKUs" sale de memoria, no se verificó en un
   administrador VTEX real. Lo confirma Dafne.
 
+## Gate 2 · ajustes (18/10/2026, sesión supervisora con Dafne)
+
+### D10 · R4 no marca fichas sin atributos de variante
+
+La pochoclera de Pardo tiene dos SKU con el mismo nombre, a $37.800 y $71.699, y ningún atributo de
+variante cargado. Dafne la miró en pantalla: no hay selector y se ve una sola variante, con
+$37.800 aun entrando por el enlace de la otra (`?skuId=128574`, código FJ_10523). Sin selector, el
+comprador no puede confundir una variante con otra, así que R4 no tiene nada que marcar. Reemplaza
+lo que D2 suponía ("sin variaciones, el selector muestra el nombre del SKU"), que resultó falso.
+El criterio 2 de la spec cambió en consecuencia.
+
+Se probó y se descartó pedir el canal de venta 1 (`sc=1`): para Pardo devolvió lo mismo que sin
+canal, y en tiendas que usan otro canal principal podría no encontrar el producto.
+
+### D11 · Solo cuentan las variantes que se pueden comprar (R2, R3, R4)
+
+Una variante sin stock o sin precio no lleva a una compra equivocada, aunque la tienda la muestre
+tachada. La oferta que se usa es la de un vendedor que tenga stock y precio, prefiriendo el
+principal; R2 y R4 descartan las variantes no comprables y R3 descarta las fichas hermanas sin
+ninguna variante comprable.
+
+### D12 · "Lo que no reviso" suma el selector sin nombres
+
+Pigmento muestra en el selector solo una foto chica por color, sin nombre ni texto al pasar el
+mouse; el tono se lee solo en el título. Es del diseño de la tienda, no del catálogo, así que esta
+versión no lo detecta. Lo dice en "Lo que no reviso" y queda primero para la próxima versión.
+
+Cerrado en Gate 2 por Dafne (18/10/2026): los textos cumplen la rúbrica, el segundo hallazgo de
+Colorshop se queda, y la ruta del menú de VTEX está bien.
+
 ## Abierto
 
 | Qué | Quién cierra |
 |---|---|
-| Si Colorshop debe dar uno o dos hallazgos R4 (D3) | Dafne, en Gate 2 |
-| Ver en pantalla que el selector de Pardo muestra el nombre del SKU (D2) | Dafne |
-| Confirmar la ruta del menú del administrador de VTEX (D9) | Dafne |
-| Rúbrica de los textos (criterio 9) | Dafne, en Gate 2 |
+| Si entrando por `?skuId=128574` y agregando al carrito, Pardo cobra $37.800 o $71.699 | Dafne |
+| Detectar el selector sin nombres (D12) | Próxima versión |

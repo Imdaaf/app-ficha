@@ -22,6 +22,7 @@ test('11 · «Lo que no reviso» aparece con resultado vacío, con hallazgos y s
     assert.match(html, /pack/i, `${id}: nombra los packs`);
     assert.match(html, /foto de cada variante/i, `${id}: nombra la foto de cada variante`);
     assert.match(html, /no mira imágenes/i, `${id}: dice por qué`);
+    assert.match(html, /selector muestra el nombre/i, `${id}: nombra el selector sin nombres`);
   }
 });
 

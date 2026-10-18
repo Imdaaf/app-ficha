@@ -1,8 +1,8 @@
 {
-  "https://www.colorshop.com.ar/api/catalog_system/pub/products/search/aerosol-esmalte-3-en-1/p": "colorshop-aerosol.json",
-  "https://www.perfumeriaspigmento.com.ar/api/catalog_system/pub/products/search/essence-delineador-de-labios-mate-de-larga-duracion-8h/p": "pigmento-delineador.json",
-  "https://www.pardo.com.ar/api/catalog_system/pub/products/search?ft=Pochoclera%20El%C3%A9ctrica%20Sin%20Aceite%20M%C3%A1quina&_from=0&_to=19": "pardo-pochoclera-busqueda.json",
-  "https://www.cetrogar.com.ar/api/catalog_system/pub/products/search?ft=Localizador%20tag%20Motorola%20XT2445&_from=0&_to=19": "cetrogar-tag-green-busqueda.json",
   "https://www.pardo.com.ar/api/catalog_system/pub/products/search/pochoclera-electrica-sin-aceite-maquina-de-pochoclos-rojo-105264/p": "pardo-pochoclera.json",
-  "https://www.cetrogar.com.ar/api/catalog_system/pub/products/search/localizador-tag-motorola-xt2445-green-cm4689/p": "cetrogar-tag-green.json"
+  "https://www.pardo.com.ar/api/catalog_system/pub/products/search?ft=Pochoclera%20El%C3%A9ctrica%20Sin%20Aceite%20M%C3%A1quina&_from=0&_to=19": "pardo-pochoclera-busqueda.json",
+  "https://www.colorshop.com.ar/api/catalog_system/pub/products/search/aerosol-esmalte-3-en-1/p": "colorshop-aerosol.json",
+  "https://www.cetrogar.com.ar/api/catalog_system/pub/products/search/localizador-tag-motorola-xt2445-green-cm4689/p": "cetrogar-tag-green.json",
+  "https://www.cetrogar.com.ar/api/catalog_system/pub/products/search?ft=Localizador%20tag%20Motorola%20XT2445&_from=0&_to=19": "cetrogar-tag-green-busqueda.json",
+  "https://www.perfumeriaspigmento.com.ar/api/catalog_system/pub/products/search/essence-delineador-de-labios-mate-de-larga-duracion-8h/p": "pigmento-delineador.json"
 }
